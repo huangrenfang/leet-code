@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+        你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
+        nums{Array} target{Number}*/
+        /*1.indexOf 数组下标查找 
+
+        function twoNum(nums,target){
+            let minus = null;
+            for(let i =0;i<nums.length;i++){
+                minus = target - nums[i];
+                if(nums.indexOf(minus) !== -1 && nums.indexOf(minus) !== i){
+                    return [i,nums.indexOf(minus)];
+                }else{
+                    return "可惜,没有找到呢";
+                }
+            }
+        }*/
+        
+        /* 2.Map对象  不推荐使用，太麻烦了，复杂度还比上面的高，代码还多
+        function twoNum(nums,target){
+            var twoSum = function(nums, target) {
+            let map = new Map();
+            let arr = new Array()
+            for(let i in nums){
+                map.set(
+                    nums[i],
+                    i
+                )
+            }
+            
+            for(let j = 0; j < nums.length - 1; j++){
+                if(map.has( target - nums[j] ) && map.get( target - nums[j]) != j ){
+                    arr.push( j , map.get( target - nums[j] ) );
+                    return arr
+                }
+            }
+        
+        }*/
+    </script>
+</body>
+</html>
