@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。
+            请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
+            你可以假设 nums1 和 nums2 不会同时为空。
+        */
+        var findMedianSortedArrays = function(nums1, nums2) {
+            let num = nums1.concat(nums2);
+            let m = null;
+            let nums = num.sort(function(a,b){
+                return a-b;
+            })
+            let l =nums.length;
+                m = nums[Math.floor((l-1)/2)]+nums[Math.ceil((l-1)/2)]
+            
+            return m/2;
+        };
+        let arr1 = [1,3,5,7];
+        let arr2 = [2];
+        let arr = arr1.concat(arr2);
+
+        
+        
+        
+        function f2(arr1, arr2) {
+            const tmp = arr1.concat(arr2).sort((a, b) => a - b);
+            const tmp2 = tmp.slice(Math.ceil(tmp.length/ 2) - 1 , Math.floor(tmp.length /2 ) + 1);  // 切出来的长度为1或者2
+            let num= 0;
+            tmp2.map(item => num += item);
+            return (num / tmp2.length);
+        }
+
+    </script>
+</body>
+</html>
