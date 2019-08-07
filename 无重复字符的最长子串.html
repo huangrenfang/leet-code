@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        // var lengthOfLongestSubstring = function(s) {
+        // let num=0,j=0,t=0
+        // for(let i=0;i<s.length;i++){
+        //     t = s.slice(j,i).indexOf(s[i]);
+        //     if(t == -1){
+        //         num=Math.max(num,i-j+1)
+        //     }else{
+        //         j=j+1
+        //     }
+        // }
+        // return num
+        // };    
+        // let s = "abcdadsbcdsa";
+        var lengthOfLongestSubstring = function (s) {
+            let n = s.length;
+            let hashMap = new Map();
+            let ans = 0;
+            for (let i = 0, j = 0; i < n; i++) {
+                if (hashMap.has(s[i])) {
+                j = Math.max(hashMap.get(s[i]), j) //hasMap.get() 优先输出排在后面等子元素的值
+                }
+                ans = Math.max(ans, i - j + 1);
+                hashMap.set(s[i], i + 1)
+            }
+            return ans;
+        };
+        // console.log(lengthOfLongestSubstring("abcdaabcdefg"));
+        let hashMap = new Map();
+        let str = "abcd";
+        let i =0;
+        for(item of str){
+            hashMap.set(item,i++);
+        }
+        console.log(hashMap.get("a"))
+    </script>
+</body>
+</html>
