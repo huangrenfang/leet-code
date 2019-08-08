@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var longestCommonPrefix = function(strs) {
+            function findOne(arr,n){
+                let newArr = [];
+                let head = [];
+                for(let item of arr){
+                    head.push(item[n])
+                }
+                return head.every(function(item){
+                    return item == arr[0][n];
+                })
+            }
+            let result = "";
+            for(let i = 0; i<strs.length;i++){
+                if(findOne(strs,i)){
+                    result += strs[i][i];
+                }
+            }
+            if(result.length == 0){
+                return "无最长前缀"
+            }
+            return result;
+        };
+
+        
+        var longestCommonPrefix = function(strs) {
+            if(strs.length == 0) 
+                return "";
+            let ans = strs[0];
+            for(let i =1;i<strs.length;i++) {
+                let j=0;
+                for(;j<ans.length && j < strs[i].length;j++) {
+                    if(ans[j] != strs[i][j])
+                        break;
+                }
+                ans = ans.substr(0, j);
+                if(ans === "")
+                    return ans;
+            }
+            return ans;
+        };
+
+        let arr = ["a","ab"];
+        // console.log(longestCommonPrefix(arr))
+    </script>
+</body>
+</html>
