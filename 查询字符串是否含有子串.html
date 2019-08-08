@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>strstr</title>
+</head>
+<body>
+    <script>
+        /*
+        实现 strStr() 函数。
+        给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。
+        如果不存在，则返回  -1
+        */
+        var strStr = function(haystack, needle) {
+            if(haystack.length<needle){
+                return -1
+            }
+            if(haystack == needle){
+                return 0
+            }
+            return haystack.indexOf(needle);
+        };
+        let str = "hello";
+        console.log(strStr("",""))
+    </script>
+</body>
+</html>

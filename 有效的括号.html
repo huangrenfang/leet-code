@@ -18,23 +18,18 @@
             
             for (var char of s) {
                 if(char in map) {
-                   
                     stack.push(char)
-                    
                 } else {
-                    console.log(stack)
                     if( !stack.length || char != map[stack.pop()]) {
                         return false
-                        
                     }
-                    console.log(stack)
                 }
             }
             
             // 如果最后stack 里没有元素了， 就一定是匹配的
             return !stack.length
         };
-        console.log(isValid("(){"))
+        console.log(Object.prototype.toString.call(isValid))
     </script>
 </body>
 </html>
