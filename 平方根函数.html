@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>平方根函数</title>
+</head>
+<body>
+    <script>
+        /*
+            实现 int sqrt(int x) 函数。
+            计算并返回 x 的平方根，其中 x 是非负整数。
+            由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去
+        */
+        var mySqrt = function(x) {
+            if(x == 0){
+                return 0
+            }else if(x == 1){
+                return 1
+            }else{
+                let half = Math.ceil(x/2)+1;
+                // debugger
+                for(let i = 0;i<half;i++){
+                    if(Math.pow(i,2) == x){
+                        return i
+                    }else if(Math.pow(i,2)<x && Math.pow(i+1,2)>x){
+                        return i
+                    }
+                }
+            }
+        };
+        // 牛顿迭代法
+        var mySqrt = function(x) {
+            let ans = x;      // 开局随便定一个数
+            while (ans * ans > x) {
+                const next = (ans + x / ans) / 2;  // 防止死循环
+                if (next === ans) {
+                break;
+                } else {
+                ans = next;
+                }
+            }
+            return Math.floor(ans);
+        };
+            
+        console.log(obj)
+    </script>
+</body>
+</html>
