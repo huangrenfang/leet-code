@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次
+        */
+        var deleteDuplicates = function(head) {
+            while(head.next != null){
+                if(head.val == head.next.val){
+                    head.next = head.next.next;
+                }else{
+                    head = head.next;
+                }
+            }
+            return head;
+        };
+    </script>
+</body>
+</html>
