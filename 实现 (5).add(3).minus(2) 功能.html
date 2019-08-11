@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试用</title>
+</head>
+<body>
+    <script>
+        /*
+            实现 (5).add(3).minus(2) = 6功能(5+3-2=8)
+        */
+        Number.prototype.add = function(n){
+            console.log("add",this)
+            return this+n
+        }
+        Number.prototype.minus = function(n){
+            console.log("minus",this)
+            return this-n
+        }
+        console.log((5).add(3).minus(2))
+    </script>
+</body>
+</html>
