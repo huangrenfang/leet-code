@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+        LazyMan('Tony');
+        // Hi I am Tony
+
+        LazyMan('Tony').sleep(10).eat('lunch');
+        // Hi I am Tony
+        // 等待了10秒...
+        // I am eating lunch
+
+        LazyMan('Tony').eat('lunch').sleep(10).eat('dinner');
+        // Hi I am Tony
+        // I am eating lunch
+        // 等待了10秒...
+        // I am eating diner
+
+        LazyMan('Tony').eat('lunch').eat('dinner').sleepFirst(5).sleep(10).eat('junk food');
+        // Hi I am Tony
+        // 等待了5秒...
+        // I am eating lunch
+        // I am eating dinner
+        // 等待了10秒...
+        // I am eating junk food
+        */
+        class LazyManClass {
+            constructor(name) {
+                this.taskList = [];
+                this.name = name;
+                console.log(`Hi I am ${this.name}`);
+                setTimeout(() => {
+                    this.next();
+                }, 0);
+                
+            }
+            eat (name) {
+                var that = this;
+                var fn = (function (n) {
+                    return function () {
+                        console.log(`I am eating ${n}`)
+                        that.next();
+                    }
+                })(name);
+                this.taskList.push(fn)
+                return this;
+            }
+            sleepFirst (time) {
+                var that = this;
+                var fn = (function (t) {
+                    return function () {
+                        setTimeout(() => {
+                            console.log(`等待了${t}秒...`)
+                            that.next();
+                        }, t * 1000);  
+                    }
+                })(time);
+                this.taskList.unshift(fn);
+                return this;
+            }
+            sleep (time) {
+                var that = this
+                var fn = (function (t) {
+                    return function () {
+                        setTimeout(() => {
+                            console.log(`等待了${t}秒...`)
+                            that.next();
+                        }, t * 1000); 
+                    }
+                })(time);
+                this.taskList.push(fn);
+                return this;
+            }
+            next () {
+                var fn = this.taskList.shift();
+                fn && fn();
+            }
+        }
+    function LazyMan(name) {
+        return new LazyManClass(name);
+    }
+// LazyMan('Tony').eat('lunch').eat('dinner').sleepFirst(5).sleep(4).eat('junk food');
+LazyMan('Tony').eat('lunch').eat('dinner').sleepFirst(5).sleep(10).eat('junk food');
+
+            /*我不是大佬，但我理解的next()应该是在LazyMan('Toney')的时候异步执行的，因为异步，
+            所以它还没干活的时候，链式调用早结束了，taskList也把要干的活按照规则存好了，随后它开始干活，
+            由于taskList中每个活函数执行完后又主动调用了一次next(),所以能一直把taskList中的活干完*/
+    </script>
+</body>
+</html>
