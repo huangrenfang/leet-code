@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>约瑟夫环</title>
+</head>
+<body>
+    <script>
+        /*
+            传说在公元1 世纪的犹太战争中，犹太历史学家弗拉维奥·约瑟夫斯和他的40 个同胞被罗马士兵包围。
+            犹太士兵决定宁可自杀也不做俘虏，于是商量出了一个自杀方案。
+            他们围成一个圈，从一个人开始，数到第三个人时将第三个人杀死，然后再数，直到杀光所有人。
+            约瑟夫和另外一个人决定不参加这个疯狂的游戏，他们快速地计算出了两个位置，站在那里得以幸存。
+            写一段程序将n 个人围成一圈，并且第m个人会被杀掉，计算一圈人中哪两个人最后会存活。使用循环链表解决该问题
+        */
+        function Node(element){
+            this.element = element;
+            this.next = null;
+        }
+        
+        //定义链表类
+        function LList(){
+            this.head = new Node("head");
+            this.head.next = this.head;
+            this.find = find;
+            this.insert = insert;
+            this.findPrevious = findPrevious;
+            this.remove = remove;
+            this.currentNode = this.head;
+            //从链表当前节点向前移动n个节点
+            this.advance = advance; 
+            //当前链表中有多少个元素
+            this.count = count;
+            this.display = display;
+        }
+        
+        //查找节点
+        function find(item){
+            var currNode = this.head;
+            while (currNode.element != item){
+            currNode = currNode.next;
+            }
+            return currNode;
+        }
+        
+        //插入新节点
+        function insert(newElement, item){
+            var newNode = new Node(newElement);
+            var current = this.find(item);
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+        
+        //查找当前节点的上一个节点
+        function findPrevious(item){
+            var currNode = this.head;
+            while (!(currNode.next == null) && (currNode.next.element != item)){
+            currNode = currNode.next;
+            }
+            return currNode;
+        }
+        
+        //移除当前节点
+        function remove(item){
+            var prevNode = this.findPrevious(item);
+            if(!(prevNode.next == null)){
+            prevNode.next = prevNode.next.next;
+            }
+        }
+        
+        //向前移动n个节点
+        function advance(n){
+            while (n>0){
+            if(this.currentNode.next.element == "head"){
+            this.currentNode = this.currentNode.next.next;
+            }else{
+            this.currentNode = this.currentNode.next;
+            } 
+            n--;
+            }
+        }
+        
+        //当前链表中有多少个元素
+        function count(){
+            var node = this.head;
+            var i = 0;
+            while (!(node.next.element == "head")){
+            node = node.next;
+            i++;
+            }
+            return i;
+        }
+        
+        //输出所有节点
+        function display(){
+            var currNode = this.head;
+            while (!(currNode.next == null) && !(currNode.next.element == "head")){
+            document.write(currNode.next.element + " ");
+            currNode = currNode.next;
+            }
+        }
+        var person = new LList();
+        person.insert('1','head');
+        person.insert('2', '1');
+        person.insert('3', '2');
+        person.insert('4' , '3');
+        person.insert('5' , '4');
+        person.insert('6' , '5');
+        person.insert('7' , '6');
+        person.insert('8' , '7');
+        person.insert('9' , '8');
+        person.insert('10' , '9');
+        console.log(person.find(1))
+        
+        person.display();
+        document.write('<br>');
+        
+        var n = 3;
+        while (person.count() > 2){
+            person.advance(n);
+            console.log(person.currentNode.elementbb s)
+            person.remove(person.currentNode.element);
+            person.display();
+            document.write('<br>');
+        }
+
+
+        /*这道题理解类中的this.head.next = this.head是关键
+          new这个类后,他里面的东西都会执行,把this.head打印出来后
+          显示的都是每个element的值都是head,指向的next都是head
+          如果这时候插入别的数据,因为它调用的find从头找出的是第一个匹配到的元素
+          所有到后面匹配到的最后一个元素指向的还是head,最后形成一个环
+
+          把next指向自己,就是环
+          这句话的目的就在这里
+        */
+    </script>
+</body>
+</html>

@@ -16,20 +16,10 @@
         
     </style>
     <script>
-        let num1=[1,1];
-        let num2=[1];
-        let arr = [];
-        let fn = function(n1,n2){
-            let newArr = n2;
-            for(let i=0;i<n1.length;i++){
-                if(newArr.indexOf(n1[i]) !=-1){
-                    arr.push(n1[i])
-                    newArr.splice(newArr.indexOf(n1[i]),1)
-                }
-            }
-            return arr;
-        }
-        console.log(fn(num1,num2))
+        var a={}, b={key:'123'}, c={key:'456'};  
+a[b]='b';
+a[c]='c';  
+console.log(a[b]);
     </script>
 </body>
 </html>
