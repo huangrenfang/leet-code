@@ -8,7 +8,22 @@
 </head>
 <body>
     <script>
-        console.log("修复git提交没有记录问题（邮箱错误问题）")
+        var lengthOfLongestSubstring = function(s) {
+            let sum = 0;
+            let res = 0;
+            let arr =[];
+            for(let i=0;i<s.length;i++){
+                if(arr.indexOf(s[i]) == -1){
+                    arr.push(s[i])
+                }else{
+                    
+                    arr.shift()
+                }
+                res = Math.max(res,arr.length);
+            }
+            return res
+        };
+        console.log(lengthOfLongestSubstring("abcdaaaasdpegsaabcde"))
     </script>
 </body>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let list =[
+            {id:1,name:'部门A',parentId:0},
+            {id:2,name:'部门B',parentId:0},
+            {id:3,name:'部门C',parentId:1},
+            {id:4,name:'部门D',parentId:1},
+            {id:5,name:'部门E',parentId:2},
+            {id:6,name:'部门F',parentId:3},
+            {id:7,name:'部门G',parentId:2},
+            {id:8,name:'部门H',parentId:4}
+        ];
+        function convert(arr){
+            let res = [];
+            let map = arr.reduce((item,next)=>(item[next.id] = next,item),{}); //转化为key是id，value是该对象的一个整体对象
+            for(let item of arr){
+                if(item.parentId == 0){
+                    res.push(item);
+                    continue;
+                }
+                if(item.parentId in map){
+                   let parent =  map[item.parentId];
+                   parent.children =parent.children || [];
+                   parent.children.push(item)
+                }
+            }
+            return res;
+        }  
+        console.log(convert(list))
+    </script>
+</body>
+</html>

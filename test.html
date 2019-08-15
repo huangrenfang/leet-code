@@ -7,19 +7,18 @@
     <title>test</title>
 </head>
 <body>
-    <div class="" id="div1">
-        <div id="div2">
-
-        </div>
-    </div>
-    <style>
-        
-    </style>
     <script>
-        var a={}, b={key:'123'}, c={key:'456'};  
-a[b]='b';
-a[c]='c';  
-console.log(a[b]);
+        var lengthOfLongestSubstring = function(s) {
+            let sum = 0;
+            let result=0;
+            for(let i=1;i<s.length;i++){
+                if(s[sum] == s[i]){
+                    sum = i
+                }
+                result = Math.max(max,i-j);
+            }
+            return result
+        };
     </script>
 </body>
 </html>

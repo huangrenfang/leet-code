@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串换整数</title>
+</head>
+<body>
+    <script>
+        /*
+            请你来实现一个 atoi 函数，使其能将字符串转换成整数。
+            首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。
+            当我们寻找到的第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字组合起来，作为该整数的正负号；
+            假如第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成整数。
+            该字符串除了有效的整数部分之后也可能会存在多余的字符，这些字符可以被忽略，它们对于函数不应该造成影响。
+            注意：假如该字符串中的第一个非空格字符不是一个有效整数字符、字符串为空或字符串仅包含空白字符时，则你的函数不需要进行转换。
+            在任何情况下，若函数不能进行有效的转换时，请返回 0。
+        */
+        var myAtoi = function(str) {
+            str = str.split("");
+            for(let i=0;i<str.length;i++){
+                if(str[i] == " "){
+                    str.splice(i,1);
+                }
+            }
+            if(str[0] == " "){
+                str.splice(0,1)
+            }
+            if(Number(str[0]) == Number || str[0] == "-"){
+                for(let i=0;i<str.length;i++){
+                    if(!Number(str[i])){
+                        str.splice(i)
+                    }
+                }
+                return Number(str.join(""))
+                
+            }else{
+                return 0
+            }
+            // console.log(str)
+        };
+        console.log(myAtoi("-123 sad asd 345"))
+        // console.log(Number("-123"))
+        // console.log(new RegExp("aabcd").exec(/^a/))
+    </script>
+</body>
+</html>
