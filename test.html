@@ -8,17 +8,17 @@
 </head>
 <body>
     <script>
-        var lengthOfLongestSubstring = function(s) {
-            let sum = 0;
-            let result=0;
-            for(let i=1;i<s.length;i++){
-                if(s[sum] == s[i]){
-                    sum = i
-                }
-                result = Math.max(max,i-j);
+        let arr = [[1,1],[1,1],[2,2],[2,2]];
+        let hashMap = new Map()
+        for(let i = 0;i<arr.length;i++){
+            hashMap.set(arr[i],i)
+        }
+        let newArr = [];
+        for(let i=0;i<arr.length;i++){
+            if(hashMap.get(arr[i]) != undefined){
+                
             }
-            return result
-        };
+        }
     </script>
 </body>
 </html>
