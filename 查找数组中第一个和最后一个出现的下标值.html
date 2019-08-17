@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>first & last</title>
+</head>
+<body>
+    <script>
+        var searchRange = function(nums, target) {
+            let j=nums.length;
+            let idx = nums.indexOf(target);
+            let first,last=-1;
+            if(idx == -1) return [-1,-1]
+            while(idx<j){
+                j--;
+                if(nums[j] == target){
+                    last=j;
+                    break; 
+                }
+            }
+            return [idx,last]
+        };
+        console.log(searchRange([5,7,7,8,8,10],8))
+    </script>
+</body>
+</html>

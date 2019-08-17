@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>两数相除</title>
+</head>
+<body>
+    <script>
+        var divide = function(dividend, divisor) {
+            let sum = 0;
+            let res = 0;
+            let j = 0;
+            while(Math.abs(sum)<dividend-Math.abs(divisor)){
+                res+=divisor
+                sum = res
+                
+                j++;
+                console.log(Math.abs(sum))
+            }
+            if(divisor < 0){
+                j = -j;
+            }
+            return j
+        };
+        console.log(divide(7,-3))
+    </script>
+</body>
+</html>
