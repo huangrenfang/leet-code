@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组合总和</title>
+</head>
+<body>
+    <script>
+        var combinationSum = function(candidates, target) {
+            let res = [];
+            let now = [];
+            candidates.sort((a,b)=>a-b);
+            if(candidates.indexOf(target) != -1){
+                res.push([target])
+                now = candidates.slice(0,candidates.indexOf(target)+1);
+            }else{
+                for(let i=0;i<candidates.length;i++){
+                    if(candidates[i]<target && candidates[i+1]>target){
+                        now = candidates.slice(0,i+1);
+                    }
+                }
+            }
+            for(let i=0;i<now.length;i++){
+                let n = target%now[i];
+                let time = Math.floor(target/now[i])
+                if(now.indexOf(n) != -1){
+                    
+                    let nowArr = [];
+                    for(let j = 0;j<tiem;j++){
+                        nowArr.push(now[i])
+                    }
+                    res.push(nowArr)
+                }else{
+                    while(time>0){
+                        time--;
+                        let nowArr = [];
+                        if(now.indexOf(target-time*now[i]) != -1){
+                            nowArr.push(now[now.indexOf(target-time*now[i])])
+                            for(let i=0;i<time;i++){
+                                nowArr.push(now[i])
+                            }
+                            res.push(nowArr)
+                        }
+                    }
+                }
+            }
+            return res
+        };
+        console.log(combinationSum([2,3,6,7],7))
+    </script>
+</body>
+</html>
