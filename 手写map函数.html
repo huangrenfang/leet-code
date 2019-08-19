@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+</head>
+<body>
+    <script>
+        // Array.prototype.newMap = function(fn){
+        //     var newArr = [];
+        //     for(let i=0;i<this.length;i++){
+        //     newArr.push(this[i],i,this);
+        //     }
+        //     return newArr
+        // }
+        // console.log([1,2,3,4,5].newMap(function(item){
+        //     return item+=1
+        // }))
+        var selfMap = function(fn, context) { // fn: 回调  context:回调作用域指定的this
+				// 1. 获取调用者this,并转为数组
+				var arr = this;
+				// 2. 遍历调用者
+				var arrMap = [];
+				for(var i = 0; i < arr.length; i++) {
+					if(!arr.hasOwnProperty(i)) {
+						continue;
+					}
+					arrMap.push(fn.call(context, arr[i], i, this));
+				}
+				return arrMap;
+			}
+        Array.prototype.newMap = selfMap;
+        console.log([1,2,3,4].newMap(function(item){
+            return item+=1
+        }))
+    </script>
+</body>
+</html>

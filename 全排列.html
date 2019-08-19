@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var permute = function(nums) {
+            let len = nums.length;
+            if (len <= 0) return [];
+            let result = [],
+                tmp = []
+            handler(nums, result, tmp, len - 1);
+            return result;
+        };
+
+            /**
+            * @param {number[]} nums
+            * @param {number[]} result
+            * @param {number[]} tmp
+            * @param {number} idx
+            */
+            function handler(nums, result, tmp, idx) {
+                if (idx < 0) {
+                    result.push(tmp);
+                    return;
+                }
+                for (let i = 0; i <= tmp.length; i++) {
+                    let t = [...tmp];
+                    t.splice(i, 0, nums[idx]);
+                    handler(nums, result, t, idx-1);
+                }
+            }
+    </script>
+</body>
+</html>

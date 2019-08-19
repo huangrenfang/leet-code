@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var context = {id:123}
+        window.id=456;
+
+        Function.prototype.myCall = function(target){
+        target = target || window //target为要传入的环境，这行命令兼容局部和全局
+        target.fn= this; //就像对象下有个方法，这个方法的this指向实际上是target，执行之后就可以改变this指向了
+        // target.fn(); 实现this指向转换,不然上一行语句只是赋值没有改变指向
+
+        var args = [];
+        for(var i = 1;i<arguments.length;i++){
+        args.push(arguments[i])
+        }// 把传进来的参数放入args中
+        target.fn(args.join(',')); //第一个参数是target，之后的args用,分隔开
+        delete target.fn; //删除，防止污染，功能已实现
+        }
+        function con(id){
+            console.log(this.id)
+        }
+        con.myCall(context.id)
+    </script>
+</body>
+</html>
