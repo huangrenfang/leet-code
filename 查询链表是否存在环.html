@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var hasCycle = function(head) {
+            const nodeCollection = new Map();
+            while(head) {
+                if (nodeCollection.get(head)) return true;
+                nodeCollection.set(head, 1)
+                head = head.next;
+            }
+            return false;
+        };    
+    </script>
+</body>
+</html>
