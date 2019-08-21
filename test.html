@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>test</title>
+    <title>Document</title>
 </head>
 <body>
+    <a href="">111</a>
+    <a href="">222</a>
     <script>
-        function add(a,b){
-            console.log(...arguments);
+        async function as(){
+            console.log(111)
+            await new Promise((resolve,reject)=>{
+                
+                if(true){
+                    resolve(console.log(222))
+                }
+            });
+            console.log(333)
         }
-        add(3,4)
+        
+        
+        as()
     </script>
 </body>
 </html>

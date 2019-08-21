@@ -30,7 +30,7 @@
 					arrMap.push(fn.call(context, arr[i], i, this));
 				}
 				return arrMap;
-			}
+		}
         Array.prototype.newMap = selfMap;
         console.log([1,2,3,4].newMap(function(item){
             return item+=1

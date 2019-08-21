@@ -17,10 +17,14 @@
                     continue;
                 }
                 // 将第一次的出参作为第二次的入参
-                result = fn.call(null, result, arr[i], i, this); // 重点理解
+                result = fn.call(null, result, arr[i], i, this); // 重点理解call之类改变作用域的函数如果传入的参数是null或undefined的话，作用域变为window
             }
             return result;
         }
+        Array.prototype.selfReduce = selfReduce;
+        console.log([1,2,3,4].selfReduce(function(pre,cur){
+            
+        }))
     </script>
 </body>
 </html>
