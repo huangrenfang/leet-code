@@ -10,33 +10,7 @@
     <a href="">111</a>
     <a href="">222</a>
     <script>
-        var trailingZeroes = function(n) {
-            let sum=1;
-            // let arr = [];
-            while(n>0){
-                sum= sum * n;
-                n--;
-            }
-            let res = sum.toString().split("");
-            let newArr = res.map(function(item){
-                return Number(item)
-            })
-            newArr.sort((a,b)=>a-b)
-            if(newArr[0] !=0){
-                return 0
-            }else{
-                for(let i=0;i<newArr.length;i++){
-                    if(newArr[i+1] != 0 ){
-                        return i+1
-                    }
-                }
-            }
-            return newArr
-        };
-        let num = 6
-        // let res = num.toString()
-        console.log(trailingZeroes(num))
-        // console.log(num)
+        
     </script>
 </body>
 </html>
