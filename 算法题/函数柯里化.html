@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            实现
+            1.  add(1)(2)(3)(4)()  输出10
+            2.  add(1,2)(3,4)()    输出10
+            3.  add(1,2)(3,4)      输出10
+            4.  add(1,2,3)(4)      输出10
+        */
+       // 1
+       function add(x){
+           let sum=0;
+           sum+=x;
+           return function(y){
+               if(arguments.length == 0){
+                   return sum;
+               }else{
+                   sum+=y
+                   return arguments.callee;
+               }
+           }
+       }
+
+       //2
+       function add (x,y){
+           let sum=0;
+           sum += x+y;
+           return function(i,j){
+               if(arguments.length == 0){
+                   return sum
+               }else{
+                   sum+= i+j;
+                    return arguments.callee
+               }
+           }
+       }
+       //通用解决方法
+       function add(){
+            let sum = 0;
+            let arg = Array.prototype.slice.call(arguments); //储存第一次执行的变量
+            let callback = function (){
+                arg.push(...arguments); //后面每次调用都会把参数传入数组中
+                return callback; //柯里化
+            }
+            callback.toString = function(){
+                return arg.reduce((a,b)=>{return a+b})  //函数在执行完所有的程序后会，会执行隐市转换，相当于函数执行在最后的钩子函数，在函数执行完后进行累加
+            }
+            return callback;
+       }
+    </script>
+</body>
+</html>

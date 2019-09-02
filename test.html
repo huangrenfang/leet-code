@@ -10,7 +10,19 @@
     <a href="">111</a>
     <a href="">222</a>
     <script>
-        
+        function add(){
+            let sum = 0;
+            let arg = Array.prototype.slice.call(arguments);
+            let callback = function (){
+                arg.push(...arguments);
+                return callback;
+            }
+            callback.toString = function(){
+                return arg.reduce((a,b)=>{return a+b})
+            }
+            return callback;
+       }
+        console.log(add(1,2,2,4,4)(3,5,4)(5,6))
     </script>
 </body>
 </html>
