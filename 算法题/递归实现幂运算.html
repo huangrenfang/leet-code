@@ -7,12 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="ipt">
-    <div id="content"></div>
     <script>
-       document.getElementById("ipt").onkeyup = function(e){
-           document.getElementById("content").innerHTML = e.target.value
-       }
+        var myPow = function(x, n) {
+            if (n < 0) return 1 / myPow(x, -n);
+            if (n === 0) return 1;
+            if (n % 2 === 0) return myPow(x * x, Math.floor(n / 2));
+            return myPow(x * x, Math.floor(n / 2)) * x;
+        };   
     </script>
 </body>
 </html>
