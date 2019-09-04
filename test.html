@@ -7,12 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="ipt">
-    <div id="content"></div>
     <script>
-       document.getElementById("ipt").onkeyup = function(e){
-           document.getElementById("content").innerHTML = e.target.value
-       }
+        function foo(){
+            let that = this
+            foo.count = 0;
+            foo.count++;
+            return that
+        }
+        console.log(foo().count,foo().count)
     </script>
 </body>
 </html>

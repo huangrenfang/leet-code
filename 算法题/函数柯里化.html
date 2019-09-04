@@ -51,7 +51,7 @@
                 return callback; //柯里化
             }
             callback.toString = function(){
-                return arg.reduce((a,b)=>{return a+b})  //函数在执行完所有的程序后会，会执行隐市转换，相当于函数执行在最后的钩子函数，在函数执行完后进行累加
+                return arg.reduce((a,b)=>{return a+b})  //函数在执行完所有的程序后会，会执行隐式转换，相当于函数执行在最后的钩子函数，在函数执行完后进行累加
             }
             return callback;
        }
