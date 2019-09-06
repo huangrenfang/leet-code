@@ -8,7 +8,21 @@
 </head>
 <body>
     <script>
-        
+        function foo(){
+            console.log(this.a);
+            console.log(this)
+        }
+        let obj ={
+            a:2,
+            foo:foo
+        }
+        function doFoo(fn){
+            fn();
+            console.log(this)
+        }
+        var a = "not obj"
+        // doFoo(obj.foo)
+        obj.foo()
     </script>
 </body>
 </html>
