@@ -8,21 +8,18 @@
 </head>
 <body>
     <script>
-        function foo(){
-            console.log(this.a);
-            console.log(this)
+        let obj1={
+            a:1
         }
-        let obj ={
-            a:2,
-            foo:foo
+        let obj2={
+            a:2
         }
-        function doFoo(fn){
-            fn();
-            console.log(this)
+        function fn(){
+            console.log(this.a)
         }
-        var a = "not obj"
-        // doFoo(obj.foo)
-        obj.foo()
+        // console.log(fn.call(obj1))
+        fn.call(obj1)
+        fn.call(obj2)
     </script>
 </body>
 </html>
