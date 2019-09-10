@@ -8,13 +8,11 @@
 </head>
 <body>
     <script>
-        function lb(){
-            for(let i=0;i<num.length;i++){
-                setTimeout(function(){
-                    
-                },1000)
-            }
+        function lb(num){
+            this.a = num
         }
+        let lb1 = new lb();
+        console.log(lb.prototype)
     </script>
 </body>
 </html>
