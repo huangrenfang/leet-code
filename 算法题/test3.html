@@ -7,10 +7,20 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="foo"></div>
     <script>
-    var a=42;
-    var b="foo";
-    var v=[1,2,3]
+    
+    function foo(){
+        var a=0;
+        return function(){
+            console.log(a++)
+        }
+    }
+    let f1= foo();
+    let f2= foo();
+    f1();
+    f1();
+    f2();
     </script>
 </body>
 </html>
