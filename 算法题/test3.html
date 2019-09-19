@@ -10,17 +10,11 @@
     <div id="foo"></div>
     <script>
     
-    function foo(){
-        var a=0;
-        return function(){
-            console.log(a++)
-        }
-    }
-    let f1= foo();
-    let f2= foo();
-    f1();
-    f1();
-    f2();
+    let p1 = new Promise(function(resolve,reject){
+        foo.bar();
+        resolve(42)
+    });
+    console.log(Object.prototype.toString.call(p1))
     </script>
 </body>
 </html>
