@@ -9,12 +9,23 @@
 <body>
     <div id="foo"></div>
     <script>
-    
-    let p1 = new Promise(function(resolve,reject){
-        foo.bar();
-        resolve(42)
-    });
-    console.log(Object.prototype.toString.call(p1))
+        // order
+    function delay(time){
+        return new Promise(function(resolve,reject){
+            setTimeout(resolve,time)
+        });
+    }
+    delay(100).then(function STEP2(){
+        console.log("step2 (after 100ms)");
+        return delay(200)
+    }).then(function STEP3(){
+        console.log("step3 (after another 200ms)")
+    }).then(function STEP4(){
+        console.log("step4 (next job)");
+        return delay(50)
+    }).then(function StEP5(){
+        console.log("step 5 (after another 50ms)")
+    })
     </script>
 </body>
 </html>
