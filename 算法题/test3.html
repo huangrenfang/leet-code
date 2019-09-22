@@ -9,23 +9,16 @@
 <body>
     <div id="foo"></div>
     <script>
-        // order
-    function delay(time){
-        return new Promise(function(resolve,reject){
-            setTimeout(resolve,time)
-        });
+    function Foo(name){
+        this.name =name;
+        Foo.newString = "string";
     }
-    delay(100).then(function STEP2(){
-        console.log("step2 (after 100ms)");
-        return delay(200)
-    }).then(function STEP3(){
-        console.log("step3 (after another 200ms)")
-    }).then(function STEP4(){
-        console.log("step4 (next job)");
-        return delay(50)
-    }).then(function StEP5(){
-        console.log("step 5 (after another 50ms)")
-    })
+    
+    let f1 = new Foo("cat");
+
+    for(let item in f1){
+        console.log(item)
+    }
     </script>
 </body>
 </html>
